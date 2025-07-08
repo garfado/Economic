@@ -149,7 +149,41 @@ text
 docker-compose up -d
 Acesse o Airflow em http://localhost:8080 e acione o DAG manualmente ou agende.
 
+run_bloomberg_commodity_index_script
+![image](https://github.com/user-attachments/assets/cb3692b1-a597-46b7-9d4f-75c3c2181732)
+
+run_chinese_caixin_services_index_etl_script
+![image](https://github.com/user-attachments/assets/75f64fc1-0237-4cdc-925c-977c6c99ddc3)
+
+chinese_services_index_usd_cny_script
+![image](https://github.com/user-attachments/assets/fa357fa2-9bea-47ab-88b4-2e4376ee071e)
+
 Verifique os dados no banco via psql, DBeaver ou outro cliente.
+
+SELECT * FROM log WHERE dag_id = 'bloomberg_commodity_index_etl' ORDER BY dttm DESC LIMIT 5;
+
+1181 | 2025-07-08 15:23:22.677396+00 | bloomberg_commodity_index_etl |                                      |           | grid       |     
+                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl')]
+1173 | 2025-07-08 15:21:14.793292+00 | bloomberg_commodity_index_etl |                                      |           | graph_data |     
+                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl')]
+1172 | 2025-07-08 15:21:11.358456+00 | bloomberg_commodity_index_etl | run_bloomberg_commodity_index_script |           | clear      | 2025-07-08 14:32:58.036097+00 | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl'), ('dag_run_id', 'manual__2025-07-08T14:32:58.036097+00:00'), ('confirmed', 'false'), ('execution_date', '2025-07-08T14:32:58.036097+00:00'), ('past', 'false'), ('future', 'false'), ('upstream', 'false'), ('downstream', 'true'), ('recursive', 'true'), ('only_failed', 'false'), ('task_id', 'run_bloomberg_commodity_index_script')]
+1171 | 2025-07-08 15:21:11.34229+00  | bloomberg_commodity_index_etl | run_bloomberg_commodity_index_script |           | confirm    |     
+                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl'), ('dag_run_id', 'manual__2025-07-08T14:32:58.036097+00:00'), ('past', 'false'), ('future', 'false'), ('upstream', 'false'), ('downstream', 'false'), ('state', 'success'), ('task_id', 'run_bloomberg_commodity_index_script')]
+1170 | 2025-07-08 15:21:08.046297+00 | bloomberg_commodity_index_etl |                                      |           | grid       |     
+                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl')]
+
+
+
+                          
+
+SELECT * FROM log WHERE dag_id = 'chinese_caixin_services_index_etl' ORDER BY dttm DESC LIMIT 10;
+
+SELECT * FROM log WHERE dag_id = 'chinese_cervices_index_usd_cny_etl' ORDER BY dttm DESC LIMIT 10;
+
+
+
+
+
 
 Considerações Finais
 O pipeline foi implementado de forma robusta, com tratamento de erros e logs detalhados.
