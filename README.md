@@ -1,25 +1,17 @@
 Data Pipeline — Coleta de Indicadores Econômicos (Investing.com)
+
 Sumário
+
 Descrição do Projeto
-
 Requisitos do Desafio
-
 Arquitetura da Solução
-
 Execução do Pipeline
-
 Tratamento de Bloqueios e Limitações
-
 Estrutura dos Dados
-
 Armazenamento e Banco de Dados
-
 Orquestração e Containerização
-
 Possíveis Evoluções
-
 Como Rodar Localmente
-
 Considerações Finais
 
 Descrição do Projeto
@@ -163,29 +155,9 @@ chinese_services_index_usd_cny_script
 
 Verifique os dados no banco via psql, DBeaver ou outro cliente.
 
-SELECT * FROM log WHERE dag_id = 'bloomberg_commodity_index_etl' ORDER BY dttm DESC LIMIT 5;
-
-1181 | 2025-07-08 15:23:22.677396+00 | bloomberg_commodity_index_etl |                                      |           | grid       |     
-                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl')]
-1173 | 2025-07-08 15:21:14.793292+00 | bloomberg_commodity_index_etl |                                      |           | graph_data |     
-                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl')]
-1172 | 2025-07-08 15:21:11.358456+00 | bloomberg_commodity_index_etl | run_bloomberg_commodity_index_script |           | clear      | 2025-07-08 14:32:58.036097+00 | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl'), ('dag_run_id', 'manual__2025-07-08T14:32:58.036097+00:00'), ('confirmed', 'false'), ('execution_date', '2025-07-08T14:32:58.036097+00:00'), ('past', 'false'), ('future', 'false'), ('upstream', 'false'), ('downstream', 'true'), ('recursive', 'true'), ('only_failed', 'false'), ('task_id', 'run_bloomberg_commodity_index_script')]
-1171 | 2025-07-08 15:21:11.34229+00  | bloomberg_commodity_index_etl | run_bloomberg_commodity_index_script |           | confirm    |     
-                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl'), ('dag_run_id', 'manual__2025-07-08T14:32:58.036097+00:00'), ('past', 'false'), ('future', 'false'), ('upstream', 'false'), ('downstream', 'false'), ('state', 'success'), ('task_id', 'run_bloomberg_commodity_index_script')]
-1170 | 2025-07-08 15:21:08.046297+00 | bloomberg_commodity_index_etl |                                      |           | grid       |     
-                          | admin | Admin User         | [('dag_id', 'bloomberg_commodity_index_etl')]
-
-
-
-                          
-
-SELECT * FROM log WHERE dag_id = 'chinese_caixin_services_index_etl' ORDER BY dttm DESC LIMIT 10;
-
-SELECT * FROM log WHERE dag_id = 'chinese_cervices_index_usd_cny_etl' ORDER BY dttm DESC LIMIT 10;
-
-
-
-
+SELECT * FROM log WHERE dag_id = 'bloomberg_commodity_index_etl' ORDER BY dttm DESC LIMIT 5;       
+SELECT * FROM log WHERE dag_id = 'chinese_caixin_services_index_etl' ORDER BY dttm DESC LIMIT 5;
+SELECT * FROM log WHERE dag_id = 'chinese_cervices_index_usd_cny_etl' ORDER BY dttm DESC LIMIT 5;
 
 
 Considerações Finais
