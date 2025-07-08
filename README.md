@@ -145,6 +145,37 @@ run_bloomberg_commodity_index_script
 
 ![image](https://github.com/user-attachments/assets/cb3692b1-a597-46b7-9d4f-75c3c2181732)
 
+324627d888b5
+*** Found local files:
+***   * /opt/airflow/logs/dag_id=bloomberg_commodity_index_etl/run_id=manual__2025-07-08T14:32:58.036097+00:00/task_id=run_bloomberg_commodity_index_script/attempt=1.log
+[2025-07-08, 14:33:00 UTC] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bloomberg_commodity_index_etl.run_bloomberg_commodity_index_script manual__2025-07-08T14:32:58.036097+00:00 [queued]>
+[2025-07-08, 14:33:00 UTC] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bloomberg_commodity_index_etl.run_bloomberg_commodity_index_script manual__2025-07-08T14:32:58.036097+00:00 [queued]>
+[2025-07-08, 14:33:00 UTC] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2025-07-08, 14:33:00 UTC] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): run_bloomberg_commodity_index_script> on 2025-07-08 14:32:58.036097+00:00
+[2025-07-08, 14:33:00 UTC] {standard_task_runner.py:60} INFO - Started process 423 to run task
+[2025-07-08, 14:33:00 UTC] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'bloomberg_commodity_index_etl', 'run_bloomberg_commodity_index_script', 'manual__2025-07-08T14:32:58.036097+00:00', '--job-id', '160', '--raw', '--subdir', 'DAGS_FOLDER/bloomberg_commodity_index_dag.py', '--cfg-path', '/tmp/tmpq99bwd81']
+[2025-07-08, 14:33:00 UTC] {standard_task_runner.py:88} INFO - Job 160: Subtask run_bloomberg_commodity_index_script
+[2025-07-08, 14:33:01 UTC] {task_command.py:423} INFO - Running <TaskInstance: bloomberg_commodity_index_etl.run_bloomberg_commodity_index_script manual__2025-07-08T14:32:58.036097+00:00 [running]> on host 324627d888b5
+[2025-07-08, 14:33:01 UTC] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='bloomberg_commodity_index_etl' AIRFLOW_CTX_TASK_ID='run_bloomberg_commodity_index_script' AIRFLOW_CTX_EXECUTION_DATE='2025-07-08T14:32:58.036097+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-08T14:32:58.036097+00:00'
+[2025-07-08, 14:33:30 UTC] {bloomberg_commodity_index_etl.py:40} INFO - Iniciando ETL Bloomberg Commodity Index
+[2025-07-08, 14:33:37 UTC] {bloomberg_commodity_index_etl.py:77} INFO - Baixado: 01/01/1991 até 01/01/1996
+[2025-07-08, 14:33:40 UTC] {bloomberg_commodity_index_etl.py:77} INFO - Baixado: 02/01/1996 até 02/01/2001
+[2025-07-08, 14:33:43 UTC] {bloomberg_commodity_index_etl.py:77} INFO - Baixado: 03/01/2001 até 03/01/2006
+[2025-07-08, 14:33:54 UTC] {bloomberg_commodity_index_etl.py:77} INFO - Baixado: 04/01/2006 até 04/01/2011
+[2025-07-08, 14:33:57 UTC] {bloomberg_commodity_index_etl.py:77} INFO - Baixado: 05/01/2011 até 05/01/2016
+[2025-07-08, 14:34:00 UTC] {bloomberg_commodity_index_etl.py:77} INFO - Baixado: 06/01/2016 até 06/01/2021
+[2025-07-08, 14:34:03 UTC] {bloomberg_commodity_index_etl.py:77} INFO - Baixado: 07/01/2021 até 08/07/2025
+[2025-07-08, 14:34:05 UTC] {bloomberg_commodity_index_etl.py:112} INFO - Linhas finais agregadas: 413
+[2025-07-08, 14:34:06 UTC] {bloomberg_commodity_index_etl.py:117} INFO - Dados salvos na tabela 'bloomberg_commodity_index' com sucesso.
+[2025-07-08, 14:34:06 UTC] {bloomberg_commodity_index_etl.py:122} INFO - ETL Bloomberg Commodity Index finalizado com sucesso.
+[2025-07-08, 14:34:06 UTC] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-08, 14:34:06 UTC] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=bloomberg_commodity_index_etl, task_id=run_bloomberg_commodity_index_script, execution_date=20250708T143258, start_date=20250708T143300, end_date=20250708T143406
+[2025-07-08, 14:34:06 UTC] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-08, 14:34:06 UTC] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
+
+
+
+
 run_chinese_caixin_services_index_etl_script
 
 ![image](https://github.com/user-attachments/assets/75f64fc1-0237-4cdc-925c-977c6c99ddc3)
@@ -156,7 +187,9 @@ chinese_services_index_usd_cny_script
 Verifique os dados no banco via psql, DBeaver ou outro cliente.
 
 SELECT * FROM log WHERE dag_id = 'bloomberg_commodity_index_etl' ORDER BY dttm DESC LIMIT 5;       
+
 SELECT * FROM log WHERE dag_id = 'chinese_caixin_services_index_etl' ORDER BY dttm DESC LIMIT 5;
+
 SELECT * FROM log WHERE dag_id = 'chinese_cervices_index_usd_cny_etl' ORDER BY dttm DESC LIMIT 5;
 
 
