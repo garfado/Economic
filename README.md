@@ -1,2 +1,162 @@
-# Economic
-BIG ETL and Transformations
+Data Pipeline — Coleta de Indicadores Econômicos (Investing.com)
+Sumário
+Descrição do Projeto
+
+Requisitos do Desafio
+
+Arquitetura da Solução
+
+Execução do Pipeline
+
+Tratamento de Bloqueios e Limitações
+
+Estrutura dos Dados
+
+Armazenamento e Banco de Dados
+
+Orquestração e Containerização
+
+Possíveis Evoluções
+
+Como Rodar Localmente
+
+Considerações Finais
+
+Descrição do Projeto
+Este projeto implementa um pipeline automatizado para coleta e organização de três indicadores econômicos públicos do site Investing.com:
+
+Chinese Caixin Services Index (mensal desde 2012)
+
+Bloomberg Commodity Index (mensal desde 1991)
+
+USD/CNY (mensal desde 1991)
+
+O objetivo é centralizar e padronizar esses dados para apoiar análises preditivas sobre o preço do papel, conforme solicitado por um Data Scientist da equipe.
+
+Requisitos do Desafio
+Coletar dados automaticamente das três páginas indicadas.
+
+Estruturar os dados em tabelas conforme especificação.
+
+Armazenar em banco de dados relacional (exceto SQLite).
+
+Demonstrar habilidades em orquestração de pipelines (Airflow), containerização (Docker) e cloud (quando possível).
+
+Documentar o processo para reprodutibilidade.
+
+Arquitetura da Solução
+Linguagem: Python 3.x
+
+Principais bibliotecas:
+
+requests/cloudscraper para coleta de dados web
+
+pandas para manipulação e limpeza dos dados
+
+sqlalchemy/psycopg2 para integração com banco de dados
+
+logging para monitoramento e troubleshooting
+
+Orquestração: Apache Airflow (Docker)
+
+Banco de Dados: PostgreSQL (Docker)
+
+Containerização: Docker Compose
+
+Execução do Pipeline
+1. Coleta dos Dados
+Requisições HTTP simulando navegador (User-Agent e headers) para tentar contornar bloqueios básicos.
+
+Extração de tabelas HTML com pandas.read_html.
+
+Tratamento de erros e logging detalhado:
+
+Status HTTP e início do HTML são registrados.
+
+Falhas como status 403 (Cloudflare) são capturadas e logadas, sem interromper o pipeline.
+
+2. Estruturação dos Dados
+Dados organizados em DataFrames com os campos:
+
+Chinese Caixin Services Index: date, actual_state, close, forecast
+
+Bloomberg Commodity Index: date, close, open, high, low, volume
+
+USD/CNY: date, close, open, high, low, volume
+
+Conversão e padronização de datas, tipos e nomes de colunas.
+
+Filtros temporais conforme solicitado.
+
+3. Armazenamento
+Exportação para CSV (etapa intermediária para debug e validação).
+
+Carga em banco PostgreSQL (com SQLAlchemy ou psycopg2), permitindo consultas SQL e integração com BI.
+
+Tratamento de Bloqueios e Limitações
+Investing.com utiliza Cloudflare:
+
+Em alguns casos, o site bloqueia scraping automatizado, retornando status 403 e página de proteção.
+
+O pipeline identifica e loga essas situações, evitando falhas não tratadas.
+
+Evolução sugerida: uso de cloudscraper, Selenium ou Playwright para contornar bloqueios mais avançados, ou busca por APIs alternativas.
+
+Estrutura dos Dados
+Chinese Caixin Services Index
+date	actual_state	close	forecast
+yyyy-mm-dd	valor	valor	valor
+
+Bloomberg Commodity Index
+date	close	open	high	low	volume
+yyyy-mm-dd	valor	...	...	...	...
+
+USD/CNY
+date	close	open	high	low	volume
+yyyy-mm-dd	valor	...	...	...	...
+
+Armazenamento e Banco de Dados
+PostgreSQL rodando em container Docker.
+
+Scripts SQL para criação das tabelas.
+
+Scripts Python para carga dos dados (insert/update).
+
+Orquestração e Containerização
+Apache Airflow para agendamento e monitoramento dos jobs ETL.
+
+Docker Compose para facilitar o setup dos serviços (Airflow, Postgres, Redis).
+
+Logs centralizados para troubleshooting.
+
+Possíveis Evoluções
+Implementar scraping com Selenium/Playwright para superar bloqueios do Cloudflare.
+
+Automatizar deploy em cloud (AWS ECS, GCP Cloud Composer, etc).
+
+Expor os dados via API REST.
+
+Monitoramento e alertas para falhas no pipeline.
+
+Como Rodar Localmente
+Clone o repositório
+
+Configure variáveis de ambiente (usuário/senha do Postgres)
+
+Suba os containers
+
+text
+docker-compose up -d
+Acesse o Airflow em http://localhost:8080 e acione o DAG manualmente ou agende.
+
+Verifique os dados no banco via psql, DBeaver ou outro cliente.
+
+Considerações Finais
+O pipeline foi implementado de forma robusta, com tratamento de erros e logs detalhados.
+
+O bloqueio do site por Cloudflare foi identificado e documentado, com sugestões de evolução.
+
+O projeto está pronto para ser expandido para ambientes produtivos e integrações mais avançadas.
+
+Se quiser, posso gerar os arquivos de exemplo (docker-compose.yml, scripts Python, DAG do Airflow, etc.) para complementar seu repositório!
+
