@@ -219,6 +219,25 @@ chinese_services_index_usd_cny_script
 
 ![image](https://github.com/user-attachments/assets/fa357fa2-9bea-47ab-88b4-2e4376ee071e)
 
+324627d888b5
+*** Found local files:
+***   * /opt/airflow/logs/dag_id=chinese_services_index_usd_cny/run_id=manual__2025-07-08T14:33:02.008846+00:00/task_id=chinese_services_index_usd_cny_script/attempt=2.log
+[2025-07-08, 14:38:34 UTC] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: chinese_services_index_usd_cny.chinese_services_index_usd_cny_script manual__2025-07-08T14:33:02.008846+00:00 [queued]>
+[2025-07-08, 14:38:34 UTC] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: chinese_services_index_usd_cny.chinese_services_index_usd_cny_script manual__2025-07-08T14:33:02.008846+00:00 [queued]>
+[2025-07-08, 14:38:34 UTC] {taskinstance.py:2171} INFO - Starting attempt 2 of 2
+[2025-07-08, 14:38:34 UTC] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): chinese_services_index_usd_cny_script> on 2025-07-08 14:33:02.008846+00:00
+[2025-07-08, 14:38:34 UTC] {standard_task_runner.py:60} INFO - Started process 606 to run task
+[2025-07-08, 14:38:34 UTC] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'chinese_services_index_usd_cny', 'chinese_services_index_usd_cny_script', 'manual__2025-07-08T14:33:02.008846+00:00', '--job-id', '162', '--raw', '--subdir', 'DAGS_FOLDER/chinese_services_index_usd_cny.py', '--cfg-path', '/tmp/tmpcjfzgzvg']
+[2025-07-08, 14:38:34 UTC] {standard_task_runner.py:88} INFO - Job 162: Subtask chinese_services_index_usd_cny_script
+[2025-07-08, 14:38:34 UTC] {task_command.py:423} INFO - Running <TaskInstance: chinese_services_index_usd_cny.chinese_services_index_usd_cny_script manual__2025-07-08T14:33:02.008846+00:00 [running]> on host 324627d888b5
+[2025-07-08, 14:38:34 UTC] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='chinese_services_index_usd_cny' AIRFLOW_CTX_TASK_ID='chinese_services_index_usd_cny_script' AIRFLOW_CTX_EXECUTION_DATE='2025-07-08T14:33:02.008846+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-08T14:33:02.008846+00:00'
+[2025-07-08, 14:38:37 UTC] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-08, 14:38:37 UTC] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=chinese_services_index_usd_cny, task_id=chinese_services_index_usd_cny_script, execution_date=20250708T143302, start_date=20250708T143834, end_date=20250708T143837
+[2025-07-08, 14:38:37 UTC] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-08, 14:38:37 UTC] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
+
+
+
 Verifique os dados no banco via psql, DBeaver ou outro cliente.
 
 SELECT * FROM log WHERE dag_id = 'bloomberg_commodity_index_etl' ORDER BY dttm DESC LIMIT 5;       
