@@ -150,12 +150,15 @@ docker-compose up -d
 Acesse o Airflow em http://localhost:8080 e acione o DAG manualmente ou agende.
 
 run_bloomberg_commodity_index_script
+
 ![image](https://github.com/user-attachments/assets/cb3692b1-a597-46b7-9d4f-75c3c2181732)
 
 run_chinese_caixin_services_index_etl_script
+
 ![image](https://github.com/user-attachments/assets/75f64fc1-0237-4cdc-925c-977c6c99ddc3)
 
 chinese_services_index_usd_cny_script
+
 ![image](https://github.com/user-attachments/assets/fa357fa2-9bea-47ab-88b4-2e4376ee071e)
 
 Verifique os dados no banco via psql, DBeaver ou outro cliente.
