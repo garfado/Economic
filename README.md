@@ -246,6 +246,9 @@ SELECT * FROM log WHERE dag_id = 'chinese_caixin_services_index_etl' ORDER BY dt
 
 SELECT * FROM log WHERE dag_id = 'chinese_cervices_index_usd_cny_etl' ORDER BY dttm DESC LIMIT 5;
 
+Montei tambem um LLM, para facilitar a vida do Usuario.
+
+<img width="883" height="707" alt="image" src="https://github.com/user-attachments/assets/8ba2b657-3992-4314-aedb-2d9af736bb68" />
 
 Considerações Finais
 O pipeline foi implementado de forma robusta, com tratamento de erros e logs detalhados.
